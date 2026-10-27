@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Canciones Infantiles</title>
+    
+    <!-- Hojas de estilo integradas (CSS3 con diseño infantil) -->
+    <style>
+        /* Importar fuentes redondeadas y divertidas */
+        @import url('https://googleapis.com');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent; /* Elimina parpadeo azul en móviles */
+        }
+
+        body {
+            background-color: #ffebf0; /* Fondo rosa pastel */
+            background-image: radial-gradient(#ffdfd3 20%, transparent 20%),
+                              radial-gradient(#e3f2fd 20%, transparent 20%);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Contenedor principal con estética de juguete o caricatura */
+        .player-container {
+            background: #ffffff;
+            border: 8px solid #ffb7b2; /* Borde grueso infantil */
+            border-radius: 30px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0px 10px 0px #ffb7b2, 0px 15px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            color: #ff6b6b;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0px #ffe3e3;
+        }
+
+        /* Cuadro combinado / Selector */
+        .select-box {
+            margin-bottom: 25px;
+        }
+
+        .select-box label {
+            display: block;
+            font-weight: 700;
+            color: #6c5ce7;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .select-box select {
+            width: 100%;
+            padding: 14px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: 4px solid #b5e2fa;
+            border-radius: 18px;
+            background-color: #e8f4f8;
+            color: #2d3436;
+            outline: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* Botones grandes y fáciles de pulsar para niños */
+        .controls {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 25px;
+            gap: 12px;
+        }
+
+        .btn {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1rem;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+            box-shadow: 0px 6px 0px rgba(0,0,0,0.15);
+            flex: 1;
+        }
+
+        .btn:active {
+            transform: translateY(4px);
+            box-shadow: 0px 2px 0px rgba(0,0,0,0.15);
+        }
+
+        #btn-play { background-color: #ff6b6b; }     /* Rojo brillante */
+        #btn-pause { background-color: #ffd166; color: #6d4c41; } /* Amarillo pollito */
+        #btn-stop { background-color: #06d6a0; }     /* Verde menta */
+
+        /* Control de volumen divertido */
+        .volume-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            background: #f0f3f4;
+            padding: 12px;
+            border-radius: 50px;
+        }
+
+        .volume-icon {
+            font-size: 1.6rem;
+        }
+
+       #volume-slider {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 75%;
+    height: 14px;
+    border-radius: 10px;
+    background: #b5e2fa;
+    outline: none;
+}
+
+        
+
+        #volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #6c5ce7; /* Púrpura */
+            cursor: pointer;
+            border: 4px solid #fff;
+            box-shadow: 0px 3px 6px rgba(0,0,0,0.15);
+        }
+
+        /* Texto informativo de estado */
+        #status-text {
+            font-size: 1rem;
+            color: #718096;
+            font-weight: 700;
+            background: #fdf2f4;
+            padding: 8px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="player-container">
+        <h1>🎵 ¡A Cantar! 🎵</h1>
+        
+        <!-- Cuadro combinado (Selector de audios) -->
+        <div class="select-box">
+            <label for="audio-select">Elige tu canción favorita:</label>
+            <select id="audio-select">
+                <option value="www/music/alex-productions-emotional-chill-electronic-vlog-music-sunset.mp3">A1</option>
+                <option value="www/music/alexgrohl-electronic-stylish-rock-15045.mp3">A2</option>
+                <option value="www/music/ikoliks-children-ukulele-upbeat-positive-pop-rock-622115.mp3">A3</option>
+                <option value="D:\proyectos\tr5\www\music\liqwyd-sweet.mp3">A4</option>
+                <option value="www/music/punch-deck-lets-just-go.mp3">A5</option>
+            </select>
+        </div>
+
+        <!-- Controles de reproducción -->
+        <div class="controls">
+            <button id="btn-play" class="btn">▶️ ¡Play!</button>
+            <button id="btn-pause" class="btn">⏸️ Pausa</button>
+            <button id="btn-stop" class="btn">⏹️ Parar</button>
+        </div>
+
+        <!-- Control de volumen -->
+        <div class="volume-container">
+            <span class="volume-icon">🔊</span>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+        </div>
+        
+        <!-- Mensajes de estado -->
+        <p id="status-text">Elige una canción y presiona Play</p>
+    </div>
+
+
+    <!-- Código JavaScript integrado -->
+    <script>
+        document.addEventListener('deviceready', onDeviceReady, false);
+
+        function onDeviceReady() {
+            // Instancia nativa del motor de audio HTML5
+            let currentAudio = new Audio();
+            
+            // Captura de elementos del DOM
+            const audioSelect = document.getElementById('audio-select');
+            const btnPlay = document.getElementById('btn-play');
+            const btnPause = document.getElementById('btn-pause');
+            const btnStop = document.getElementById('btn-stop');
+            const volumeSlider = document.getElementById('volume-slider');
+            const statusText = document.getElementById('status-text');
+
+            // Configurar volumen inicial desde el slider
+            currentAudio.volume = volumeSlider.value;
+
+            // Función interna para asignar la canción activa
+            function loadSelectedAudio() {
+                currentAudio.src = audioSelect.value;
+                currentAudio.load();
+            }
+
+            // Precargar el primer archivo de la lista
+            loadSelectedAudio();
+
+            // Detectar cambio de canción en el cuadro combinado
+            audioSelect.addEventListener('change', function() {
+                const wasPlaying = !currentAudio.paused;
+                loadSelectedAudio();
+                
+                if (wasPlaying) {
+                    currentAudio.play();
+                    statusText.innerText = "Cambiando de canción... 🎵";
+                } else {
+                    statusText.innerText = "¡Nueva canción lista!";
+                }
+            });
+
+            // Acción del botón Play
+            btnPlay.addEventListener('click', function() {
+                currentAudio.play()
+                    .then(() => {
+                        statusText.innerText = "¡Sonando música divertida! 💃🕺";
+                    })
+                    .catch(error => {
+                        statusText.innerText = "Asegúrate de tener tus MP3 listos";
+                        console.log("Error de reproducción:", error);
+                    });
+            });
+
+            // Acción del botón Pausa
+            btnPause.addEventListener('click', function() {
+                currentAudio.pause();
+                statusText.innerText = "Música en pausa 🤫";
+            });
+
+            // Acción del botón Stop
+            btnStop.addEventListener('click', function() {
+                currentAudio.pause();
+                currentAudio.currentTime = 0; // Reinicia el tiempo a cero
+                statusText.innerText = "Música detenida 🛑";
+            });
+
+            // Acción del Slider de Volumen
+            volumeSlider.addEventListener('input', function() {
+                currentAudio.volume = this.value;
+            });
+        }
+
+        // Activación de respaldo para pruebas rápidas directamente en navegadores de PC
+        if (!window.cordova) {
+            window.addEventListener('load', onDeviceReady);
+        }
+    </script>
+</body>
+</html>
